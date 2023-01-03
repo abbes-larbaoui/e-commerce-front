@@ -9,7 +9,11 @@
     "src/polyfills.ts"
   ],
   "include": [
+<<<<<<< HEAD
     "src/**/*.d.ts"
+=======
+    "src/**/*.ts"
+>>>>>>> refs/remotes/e-commerce-front/master
   ],
   "exclude": [
     "src/test.ts",

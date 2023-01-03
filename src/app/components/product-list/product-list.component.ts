@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductListComponent implements OnInit {
 
+<<<<<<< HEAD
   products: Product[] = [];
   currentCategoryId: number = 1;
   previousCategoryId: number = 1;
@@ -22,10 +23,19 @@ export class ProductListComponent implements OnInit {
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) { }
+=======
+  products: Product[];
+  currentCategoryId: number;
+  searchMode: boolean;
+
+  constructor(private productService: ProductService,
+    private route: ActivatedRoute) { }
+>>>>>>> refs/remotes/e-commerce-front/master
 
   ngOnInit() {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
+<<<<<<< HEAD
     });
   }
 
@@ -47,6 +57,22 @@ export class ProductListComponent implements OnInit {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
 
     // now search for the products using keyword
+=======
+    })
+  }
+
+  listProducts() {
+    this.searchMode = this.route.snapshot.paramMap.has('keyword');
+    if (this.searchMode) {
+      this.handleSearchProducts();
+    } else {
+      this.handleListProduct();
+    }
+  }
+
+  handleSearchProducts() {
+    const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
+>>>>>>> refs/remotes/e-commerce-front/master
     this.productService.searchProducts(theKeyword).subscribe(
       data => {
         this.products = data;
@@ -54,6 +80,7 @@ export class ProductListComponent implements OnInit {
     )
   }
 
+<<<<<<< HEAD
   handleListProducts() {
 
     // check if "id" parameter is available
@@ -98,4 +125,24 @@ export class ProductListComponent implements OnInit {
       this.theTotalElements = data.page.totalElements;
     };
   }
+=======
+  handleListProduct() {
+    // check if "id" caategory parameter is available
+    const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
+
+    if (hasCategoryId) {
+      this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
+    } else {
+      this.currentCategoryId = 1;
+    }
+
+
+    this.productService.getProductList(this.currentCategoryId).subscribe(
+      data => {
+        this.products = data;
+      }
+    )
+  }
+
+>>>>>>> refs/remotes/e-commerce-front/master
 }

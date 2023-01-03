@@ -2,10 +2,14 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
             <div class="row">
+<<<<<<< HEAD
 
                 <!-- loop over the collection of products -->
                 <div *ngFor="let tempProduct of products" class="col-md-3">
 
+=======
+                <div *ngFor="let tempProduct of products" class="col-md-3">
+>>>>>>> refs/remotes/e-commerce-front/master
                     <div class="product-box">
 
                         <a routerLink="/products/{{ tempProduct.id }}">
@@ -15,6 +19,7 @@
                         <a routerLink="/products/{{ tempProduct.id }}">
                             <h1>{{ tempProduct.name }}</h1>
                         </a>
+<<<<<<< HEAD
                         
                         <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
                         <a href="#" class="primary-btn">Add to cart</a>
@@ -62,3 +67,19 @@
 
 
 
+=======
+
+                        <div class="price">{{ tempProduct.unitPrice | currency:'USD' }}</div>
+                        <a href="#" class="primary-btn text-decoration-none">Add to cart</a>
+                        
+                    </div>       
+                </div>
+
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> refs/remotes/e-commerce-front/master
