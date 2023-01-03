@@ -1,9 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-=======
->>>>>>> refs/remotes/e-commerce-front/master
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,12 +8,9 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-<<<<<<< HEAD
       imports: [
         NgbPagination
       ]
-=======
->>>>>>> refs/remotes/e-commerce-front/master
     }).compileComponents();
   }));
 
