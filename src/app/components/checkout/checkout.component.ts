@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Country } from 'src/app/common/country';
 import { State } from 'src/app/common/state';
+import { CartService } from 'src/app/services/cart.service';
 import { ShopFormService } from 'src/app/services/shop-form.service';
 import { ShopValidators } from 'src/app/validators/shop-validators';
 
@@ -25,9 +26,13 @@ export class CheckoutComponent implements OnInit {
   billingAddressStates: State[] = [];
 
   constructor(private formBuilder: FormBuilder,
+    private cartService: CartService,
     private shopFormService: ShopFormService) { }
 
   ngOnInit(): void {
+
+    // review cart detail
+    this.reviewCartDetails();
 
     // populate countries
     this.shopFormService.getCountries().subscribe(
@@ -140,6 +145,16 @@ export class CheckoutComponent implements OnInit {
 
     this.shopFormService.getCreditCardYears().subscribe(
       data => this.creditCardYears = data
+    )
+  }
+
+  reviewCartDetails() {
+    this.cartService.totalQuantity.subscribe(
+      data => this.totalQuantity = data
+    )
+
+    this.cartService.totalPrice.subscribe(
+      data => this.totalPrice = data
     )
   }
 
